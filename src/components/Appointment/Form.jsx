@@ -5,6 +5,11 @@ import InterviewerList from "components/InterviewerList";
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || '');
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+
+  const reset = () => {
+    setStudent('')
+    setInterviewer(null)
+  }
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
