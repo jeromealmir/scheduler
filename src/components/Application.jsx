@@ -38,7 +38,6 @@ export default function Application(props) {
           <DayList
           days={days}
           day={day}
-          hello={day}
           setDay={setDay}
           />
         </nav>
