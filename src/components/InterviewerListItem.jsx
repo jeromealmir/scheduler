@@ -21,9 +21,3 @@ export default function InterviewerListItem(props) {
   );
 }
 
-// Props:
-// id:number
-// name:string
-// avatar:url
-// selected:boolean
-// setInterviewer:function
