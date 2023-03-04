@@ -17,7 +17,7 @@ export function useVisualMode(initial) {
     //remove last item from history only if history.length is more than one
     history.length > 1 && history.pop()
     
-    const prev = history.slice(-1).toString();
+    const prev = history[history.length - 1];
     setMode(prev)
   }
 
