@@ -42,6 +42,8 @@ export default function Appointment(props) {
       )}
       {mode === SHOW && (
         <Show
+          student={props.interview && props.interview.student}
+          interviewer={props.interview && props.interview.interviewer && props.interview.interviewer.name}
           onDelete={() => transition(CONFIRM)}
       {mode === SAVING && <Status message="Saving"/>}
       {mode === DELETING && <Status message="Deleting"/>}
