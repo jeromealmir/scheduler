@@ -15,6 +15,15 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  const save = (name, interviewer) => {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    transition(SAVING)
+    props.bookInterview(props.id, interview).then(() => transition(SHOW))
+  }
+
   return (
     <article className="appointment">
       <Header time={props.time} />
