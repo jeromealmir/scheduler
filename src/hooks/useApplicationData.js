@@ -12,6 +12,20 @@ export default function useApplicationData(props) {
 
   const setDay = day => setState(prev => ({...prev, day}));
 
+  const findDayID = (day) => {
+    const days = {
+      Monday: 0,
+      Tuesday: 1,
+      Wednesday: 2,
+      Thursday: 3,
+      Friday: 4
+    }
+
+    return days[day]
+  }
+  
+  const dayID = findDayID(state.day);
+
   const bookInterview = (id, interview) => {
       
     const appointment = {
