@@ -60,7 +60,19 @@ export default function useApplicationData(props) {
       ...state.appointments,
       [id]: appointment
     };
-    return axios.delete(`/api/appointments/${id}`).then(() => setState({...state, appointments}))
+
+    const day = {
+      ...state.days[dayID],
+      spots: {...state.days[dayID]}.spots + 1
+    };
+
+    days[dayID] = day;
+    
+    const days = state.days;
+
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => setState(prev => ({...prev, appointments, days})))
+
   }
 
   useEffect(() => {
