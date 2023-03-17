@@ -36,7 +36,7 @@ export default function Appointment(props) {
   }
 
   const del = () => {
-    transition(DELETING)
+    transition(DELETING, true)
     return props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch(() => transition(ERROR_DELETE, true))
