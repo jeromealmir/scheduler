@@ -27,7 +27,7 @@ export default function useApplicationData(props) {
   const dayID = findDayID(state.day);
 
   const bookInterview = (id, interview) => {
-      
+    
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -37,10 +37,20 @@ export default function useApplicationData(props) {
       [id]: appointment
     };
 
-  return axios.put(`/api/appointments/${id}`, { interview })
-    .then(() => setState(prev => ({...prev, appointments})))
-  }
+    const day = {
+      ...state.days[dayID],
+      spots: {...state.days[dayID]}.spots - 1
+    };
+  
+    days[dayID] = day;
+    
+    const days = state.days;
 
+  return axios.put(`/api/appointments/${id}`, { interview })
+    .then(() => setState(prev => ({...prev, appointments, days})))
+
+  }
+  
   const cancelInterview = (id) => {
     const appointment = {
       ...state.appointments[id],
