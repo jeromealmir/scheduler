@@ -8,7 +8,7 @@ export function useVisualMode(initial) {
     setMode(newMode)
   
     //if replace is truthy, replace current mode in history otherwise add current mode to history
-    replace ? history.splice(-1, 1, newMode) : setHistory(prev => [...prev, newMode])
+    replace ? history.splice(-1, 1, newMode) : setHistory(prev => ([...prev, newMode]))
 
   }
 
