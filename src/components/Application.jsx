@@ -7,45 +7,16 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "help
 
 export default function Application(props) {
 
-  const [state, setState] = useState({
-    day: 'Monday',
-    days: [],
-    appointments: {}
-  });
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData();
 
   const dailyInterviewers = getInterviewersForDay(state, state.day)
   
-  const bookInterview = (id, interview) => {
-      
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
-  return axios.put(`/api/appointments/${id}`, { interview })
-    .then(() => setState(prev => ({...prev, appointments})))
-  }
-
-  const cancelInterview = (id) => {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-    return axios.delete(`/api/appointments/${id}`).then(() => setState({...state, appointments}))
-  }
-
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
-  
-  const schedule = dailyAppointments.map(appointment => {
-    const interview = getInterview(state, appointment.interview);
+  const schedule = getAppointmentsForDay(state, state.day).map(appointment => {
     return (
       <Appointment
       key={appointment.id}
