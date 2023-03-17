@@ -5,6 +5,7 @@ import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
 import Status from "./Status";
+import Error from "./Error";
 import Confirm from "./Confirm";
 import { useVisualMode } from "hooks/useVisualMode";
 
