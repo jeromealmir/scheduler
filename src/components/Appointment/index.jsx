@@ -80,7 +80,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === ERROR_SAVE && <Error message="Server Error. Could not save changes." onClose={back}/>}
-      {mode === ERROR_DELETE && <Error message="Server Error. Could not delete appointment." onClose={() => transition(SHOW)}/>}
+      {mode === ERROR_DELETE && <Error message="Server Error. Could not delete appointment." onClose={back}/>}
     </article>
   );
 }
