@@ -40,9 +40,9 @@ export default function useApplicationData(props) {
       spots: { ...state.days[dayID] }.spots - 1,
     };
 
-    days[dayID] = day;
-
     const days = state.days;
+
+    days[dayID] = day;
 
     return axios
       .put(`/api/appointments/${id}`, { interview })
@@ -64,9 +64,9 @@ export default function useApplicationData(props) {
       spots: { ...state.days[dayID] }.spots + 1,
     };
 
-    days[dayID] = day;
-
     const days = state.days;
+
+    days[dayID] = day;
 
     return axios
       .delete(`/api/appointments/${id}`)
