@@ -48,7 +48,32 @@ const fixtures = {
     "4": {
       id: 4,
       name: "Cohana Roy",
-      avatar: "https://i.imgur.com/FK8V841.jpg"
+export default {
+  get: jest.fn((url) => {
+    switch (url) {
+      case "/api/days": {
+        return Promise.resolve({
+          status: 200,
+          statusText: "OK",
+          data: fixtures.days,
+        });
+      }
+
+      case "/api/appointments": {
+        return Promise.resolve({
+          status: 200,
+          statusText: "OK",
+          data: fixtures.appointments,
+        });
+      }
+
+      case "/api/interviewers": {
+        return Promise.resolve({
+          status: 200,
+          statusText: "OK",
+          data: fixtures.interviewers,
+        });
+      }
     }
-  }
+  }),
 };
