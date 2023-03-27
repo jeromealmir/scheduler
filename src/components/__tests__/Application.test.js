@@ -50,7 +50,10 @@ describe("Application", () => {
 
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
 
-    console.log(prettyDOM(appointment));
+    const day = getAllByTestId(container, "day").find((day) =>
+      queryByText(day, "Monday")
+    );
 
+    expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 });
