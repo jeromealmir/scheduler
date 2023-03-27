@@ -9,9 +9,8 @@ import {
   getByAltText,
   getByPlaceholderText,
   queryByText,
+  getByText,
 } from "@testing-library/react";
-
-import { getByText } from "@testing-library/react";
 
 import Application from "components/Application";
 
