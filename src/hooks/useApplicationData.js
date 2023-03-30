@@ -25,7 +25,7 @@ export default function useApplicationData(props) {
 
   const dayID = findDayID(state.day);
 
-  const bookInterview = (id, interview) => {
+  const bookInterview = (id, interview, editMode = false) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -37,7 +37,7 @@ export default function useApplicationData(props) {
 
     const day = {
       ...state.days[dayID],
-      spots: { ...state.days[dayID] }.spots - 1,
+      spots: editMode ? { ...state.days[dayID] }.spots : { ...state.days[dayID] }.spots - 1,
     };
 
     const days = state.days;
