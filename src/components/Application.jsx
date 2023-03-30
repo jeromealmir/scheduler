@@ -31,6 +31,12 @@ export default function Application(props) {
     }
   );
 
+  const getLastTime =
+    appointments
+      .filter((appointment) => appointment.props && appointment.props.time)
+      .map((appointment) => parseInt(appointment.props.time.slice(0, -2)) + 1)
+      .findLast((time) => !isNaN(time)) + "pm";
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -49,7 +55,10 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{appointments}</section>
+      <section className="schedule">
+        {appointments}
+        <Appointment key="last" time={getLastTime} />
+      </section>
     </main>
   );
 }
