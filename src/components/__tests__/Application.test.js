@@ -119,8 +119,32 @@ describe("Application", () => {
       }
     );
   });
-    const day = getAllByTestId(container, "day").find((day) =>
-      queryByText(day, "Monday")
+
+  it("shows the save error when failing to save an appointment", async () => {
+    axios.put.mockRejectedValueOnce();
+
+    const { container } = render(<Application />);
+
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointment").find(
+      (appointment) => queryByText(appointment, "Archie Cohen")
+    );
+
+    fireEvent.click(getByAltText(appointment, "Edit"));
+
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+      target: { value: "Joe Miller" },
+    });
+
+    fireEvent.click(getByText(appointment, "Save"));
+
+    await waitForElement(() => getByText(appointment, "Error")).then(() => {
+      expect(
+        getByText(appointment, "Server Error. Could not save changes.")
+      ).toBeInTheDocument();
+    });
+  });
     );
 
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
