@@ -90,6 +90,35 @@ describe("Application", () => {
     });
   });
 
+  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
+    const { container } = render(<Application />);
+
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointment").find(
+      (appointment) => queryByText(appointment, "Archie Cohen")
+    );
+
+    fireEvent.click(getByAltText(appointment, "Edit"));
+
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+      target: { value: "Joe Miller" },
+    });
+
+    fireEvent.click(getByText(appointment, "Save"));
+
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+
+    await waitForElement(() => getByText(appointment, "Joe Miller")).then(
+      () => {
+        const day = getAllByTestId(container, "day").find((day) =>
+          queryByText(day, "Monday")
+        );
+
+        expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
+      }
+    );
+  });
     const day = getAllByTestId(container, "day").find((day) =>
       queryByText(day, "Monday")
     );
