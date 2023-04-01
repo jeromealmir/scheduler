@@ -31,11 +31,11 @@ export default function Application(props) {
     }
   );
 
-  const getLastTime =
-    appointments
-      .filter((appointment) => appointment.props && appointment.props.time)
-      .map((appointment) => parseInt(appointment.props.time.slice(0, -2)) + 1)
-      .findLast((time) => !isNaN(time)) + "pm";
+  const getLastTime = appointments
+    .filter((appointment) => appointment.props && appointment.props.time)
+    .map((appointment) => parseInt(appointment.props.time.slice(0, -2)) + 1);
+
+  const lastTime = getLastTime.pop() + "pm";
 
   return (
     <main className="layout">
@@ -57,7 +57,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {appointments}
-        <Appointment key="last" time={getLastTime} />
+        <Appointment key="last" time={lastTime} />
       </section>
     </main>
   );
