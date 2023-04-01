@@ -1,9 +1,8 @@
 import React from "react";
-
+import DayListItem from "components/DayListItem";
 import { render, cleanup } from "@testing-library/react";
 
-import DayListItem from "components/DayListItem";
-
+// clean up any resources or state created during the test case
 afterEach(cleanup);
 
 it("renders without crashing", () => {
