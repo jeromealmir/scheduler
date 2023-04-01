@@ -1,8 +1,7 @@
 import React from "react";
-
+import Appointment from "components/Appointment";
 import { render, cleanup } from "@testing-library/react";
 
-import Appointment from "components/Appointment";
 
 afterEach(cleanup);
 
