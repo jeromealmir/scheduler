@@ -44,7 +44,9 @@ export default function useApplicationData() {
 
     const day = {
       ...state.days[dayID],
-      spots: editMode ? { ...state.days[dayID] }.spots : { ...state.days[dayID] }.spots - 1,
+      spots: editMode
+        ? { ...state.days[dayID] }.spots
+        : { ...state.days[dayID] }.spots - 1,
     };
 
     const days = state.days;
