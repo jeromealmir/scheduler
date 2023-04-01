@@ -18,6 +18,7 @@ export default function useFormData(props) {
     error: "",
   });
 
+  // Sets the corresponding values in the state object.
   const setStudent = (value) =>
     setState((prev) => ({ ...prev, student: value }));
   const setInterviewer = (value) =>
@@ -41,6 +42,7 @@ export default function useFormData(props) {
    * If the student name is blank or the interviewer is not selected, an error message is set.
    */
   const validate = () => {
+
     if (state.student === "") {
       setError("Student name cannot be blank");
       return;
