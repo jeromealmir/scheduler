@@ -19,10 +19,10 @@ describe("Form", () => {
     },
   ];
 
-  // Create a mock onSave function
+  // Mock onSave function
   const onSave = jest.fn();
 
-  // Create a mock onCancel function
+  // Mock onCancel function
   const onCancel = jest.fn();
 
   it("renders without student name if not provided", () => {
@@ -63,6 +63,15 @@ describe("Form", () => {
 
     expect(getByText(/please select an interviewer/i)).toBeInTheDocument();
     expect(onSave).not.toHaveBeenCalled();
+  });
+
+  it("prevents default form submission", () => {
+    // Mock handleSubmit function
+    const handleSubmit = jest.fn();
+    const { getByTestId } = render(<Form interviewers={interviewers} onSubmit={handleSubmit} />);
+    const form = getByTestId("form");
+    fireEvent.submit(form);
+    expect(handleSubmit).not.toHaveBeenCalled();
   });
 
   it("can successfully save after trying to submit an empty student name", () => {
