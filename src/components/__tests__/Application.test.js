@@ -14,7 +14,6 @@ import {
   getByText,
 } from "@testing-library/react";
 
-
 // clean up any resources or state created during the test case
 afterEach(cleanup);
 
