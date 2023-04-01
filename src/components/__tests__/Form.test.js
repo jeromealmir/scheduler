@@ -13,6 +13,12 @@ describe("Form", () => {
     },
   ];
 
+  // Create a mock onSave function
+  const onSave = jest.fn();
+
+  // Create a mock onCancel function
+  const onCancel = jest.fn();
+
   it("renders without student name if not provided", () => {
     const { getByPlaceholderText } = render(
       <Form interviewers={interviewers} />
@@ -28,7 +34,6 @@ describe("Form", () => {
   });
 
   it("validates that the student name is not blank", () => {
-    const onSave = jest.fn();
     const { getByText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
     );
@@ -40,7 +45,6 @@ describe("Form", () => {
   });
 
   it("validates that the interviewer cannot be null", () => {
-    const onSave = jest.fn();
     const { getByText } = render(
       <Form
         interviewers={interviewers}
@@ -56,7 +60,6 @@ describe("Form", () => {
   });
 
   it("can successfully save after trying to submit an empty student name", () => {
-    const onSave = jest.fn();
     const { getByText, getByPlaceholderText, queryByText } = render(
       <Form
         interviewers={interviewers}
@@ -81,8 +84,6 @@ describe("Form", () => {
   });
 
   it("calls onCancel and resets the input field", () => {
-    const onCancel = jest.fn();
-    const onSave = jest.fn();
     const { getByText, getByPlaceholderText, queryByText } = render(
       <Form
         interviewers={interviewers}
