@@ -15,6 +15,7 @@ import {
 } from "@testing-library/react";
 
 
+// clean up any resources or state created during the test case
 afterEach(cleanup);
 
 describe("Application", () => {
@@ -120,6 +121,7 @@ describe("Application", () => {
   });
 
   it("shows the save error when failing to save an appointment", async () => {
+    //simulate failed HTTP PUT request by returning a rejected promise
     axios.put.mockRejectedValueOnce();
 
     const { container } = render(<Application />);
@@ -146,6 +148,7 @@ describe("Application", () => {
   });
 
   it("shows the delete error when failing to delete an existing appointment", async () => {
+    //simulate failed HTTP DELETE request by returning a rejected promise
     axios.delete.mockRejectedValueOnce();
 
     const { container } = render(<Application />);
