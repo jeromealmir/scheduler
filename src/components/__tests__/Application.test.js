@@ -1,4 +1,6 @@
 import React from "react";
+import Application from "components/Application";
+import axios from "axios";
 
 import {
   render,
@@ -12,9 +14,6 @@ import {
   getByText,
 } from "@testing-library/react";
 
-import Application from "components/Application";
-
-import axios from "axios";
 
 afterEach(cleanup);
 
