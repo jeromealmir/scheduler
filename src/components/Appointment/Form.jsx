@@ -21,15 +21,15 @@ export default function Form(props) {
             name="name"
             type="text"
             placeholder="Enter Student Name"
-            value={student}
+            value={state.student}
             onChange={(event) => setStudent(event.target.value)}
             data-testid="student-name-input"
           />
         </form>
-        <section className="appointment__validation">{error}</section>
+        <section className="appointment__validation">{state.error}</section>
         <InterviewerList
           interviewers={props.interviewers}
-          value={interviewer}
+          value={state.interviewer}
           onChange={setInterviewer}
         />
       </section>
