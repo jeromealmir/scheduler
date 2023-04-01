@@ -32,7 +32,7 @@ export default function useApplicationData() {
 
   const dayID = findDayID(state.day);
 
-  const bookInterview = (id, interview, editMode = false) => {
+  const bookInterview = async (id, interview, editMode = false) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -51,12 +51,11 @@ export default function useApplicationData() {
 
     days[dayID] = day;
 
-    return axios
-      .put(`/api/appointments/${id}`, { interview })
-      .then(() => setState((prev) => ({ ...prev, appointments, days })));
+    await axios.put(`/api/appointments/${id}`, { interview });
+    return setState((prev) => ({ ...prev, appointments, days }));
   };
 
-  const cancelInterview = (id) => {
+  const cancelInterview = async (id) => {
     const appointment = {
       ...state.appointments[id],
       interview: null,
@@ -75,9 +74,8 @@ export default function useApplicationData() {
 
     days[dayID] = day;
 
-    return axios
-      .delete(`/api/appointments/${id}`)
-      .then(() => setState((prev) => ({ ...prev, appointments, days })));
+    await axios.delete(`/api/appointments/${id}`);
+    return setState((prev) => ({ ...prev, appointments, days }));
   };
 
   useEffect(() => {
