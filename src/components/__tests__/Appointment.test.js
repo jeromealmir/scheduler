@@ -10,8 +10,4 @@ describe("Appointment", () => {
   it("renders without crashing", () => {
     render(<Appointment />);
   });
-
-  test.todo("does something it is supposed to do");
-
-  test.skip("does something else it is supposed to do", () => {});
 });
