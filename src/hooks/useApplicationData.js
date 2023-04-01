@@ -8,7 +8,7 @@ import {
   getInterviewersForDay,
 } from "helpers/selectors";
 
-export default function useApplicationData(props) {
+export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
