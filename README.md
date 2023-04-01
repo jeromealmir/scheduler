@@ -1,4 +1,4 @@
-# LightBnB Project
+# Interview Scheduler Project
 
 Interview Scheduler is a React-based application that allows users to schedule technical interviews between students and mentors. The app limits appointments to weekdays between 12 PM and 5 PM and allows users to view, create, edit, and delete appointments using a predefined list of interviewers.
 
@@ -8,6 +8,13 @@ The goal of this project is to develop and test a real-time React application by
 
 ## Gallery
 
+| ![walkthrough.gif](./docs/walkthrough.gif) | 
+|:--:| 
+| App Walkthrough |
+
+| ![homepage.png](./docs/homepage.png) | 
+|:--:| 
+| Interview Scheduler |
 
 ## Getting Started
 
@@ -38,6 +45,8 @@ npm run storybook
 
 ## Dependencies
 
+- npm @ 8.0.0
+- node @ 16.0.0
 - axios @ 0.20.0
 - classnames @ 2.2.6
 - normalize.css @ 8.0.1
