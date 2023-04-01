@@ -1,4 +1,7 @@
+//cypress end-to-end test for Appointment component
+
 describe("should book an interview", () => {
+  //reset database and visit root before each test run
   beforeEach(() => {
     cy.request("GET", "/api/debug/reset");
 
@@ -10,6 +13,7 @@ describe("should book an interview", () => {
   it("should book an interview", () => {
     cy.get("[alt=Add]").first().click();
 
+    //find form input field by data-* attribute
     cy.get("[data-testid=student-name-input]").type("Lydia Miller-Jones");
     cy.get("[alt='Sylvia Palmer']").click();
 
@@ -22,6 +26,7 @@ describe("should book an interview", () => {
   it("should edit an interview", () => {
     cy.get("[alt='Edit']").first().click({ force: true });
 
+    //find form input field by data-* attribute
     cy.get("[data-testid=student-name-input]")
       .clear()
       .type("Lydia Miller-Jones");
