@@ -1,3 +1,4 @@
+//mock data
 const fixtures = {
   days: [
     {
@@ -53,6 +54,7 @@ const fixtures = {
   },
 };
 
+//mock [get, put, delete] functions
 export default {
   get: jest.fn((url) => {
     switch (url) {
