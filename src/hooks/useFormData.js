@@ -1,6 +1,6 @@
 /**
  * A custom React hook that manages the state of a form.
- * 
+ *
  * @param {Object} props - The props object containing the initial state of the form.
  * @param {string} props.student - The initial value of the student name input.
  * @param {Object} props.interviewer - The initial value of the interviewer select input.
@@ -18,20 +18,27 @@ export default function useFormData(props) {
     error: "",
   });
 
-  // Sets the corresponding values in the state object.
+  /**
+   * Sets the corresponding values in the state object.
+   * @param {*} value
+   */
   const setStudent = (value) =>
     setState((prev) => ({ ...prev, student: value }));
   const setInterviewer = (value) =>
     setState((prev) => ({ ...prev, interviewer: value }));
   const setError = (value) => setState((prev) => ({ ...prev, error: value }));
 
-  // Resets the state of the component by setting the student to an empty string and the interviewer to null.
+  /**
+   * Resets the state of the component by setting the student to an empty string and the interviewer to null.
+   */
   const reset = () => {
     setStudent("");
     setInterviewer(null);
   };
 
-  // Calls the reset function and the onCancel prop when the user cancels the appointment.
+  /**
+   * Calls the reset function and the onCancel prop when the user cancels the appointment.
+   */
   const cancel = () => {
     reset();
     props.onCancel();
@@ -42,7 +49,6 @@ export default function useFormData(props) {
    * If the student name is blank or the interviewer is not selected, an error message is set.
    */
   const validate = () => {
-
     if (state.student === "") {
       setError("Student name cannot be blank");
       return;

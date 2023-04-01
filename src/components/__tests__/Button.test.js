@@ -1,9 +1,13 @@
+/**
+ * A test suite for the Button component.
+ */
+
 import React from "react";
 import Button from "components/Button";
 
 import { render, cleanup, fireEvent } from "@testing-library/react";
 
-// clean up any resources or state created during the test case
+// Clean up any resources used by the test after each test
 afterEach(cleanup);
 
 describe("Button", () => {
@@ -32,6 +36,7 @@ describe("Button", () => {
   });
 
   it("renders a clickable button", () => {
+    // A mock function that can be used to simulate a click event.
     const handleClick = jest.fn();
     const { getByText } = render(
       <Button onClick={handleClick}>Clickable</Button>
@@ -45,6 +50,7 @@ describe("Button", () => {
   });
 
   it("renders a disabled button", () => {
+    // A mock function that can be used to simulate a click event.
     const handleClick = jest.fn();
     const { getByText } = render(
       <Button disabled onClick={handleClick}>

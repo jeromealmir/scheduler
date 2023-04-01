@@ -1,3 +1,8 @@
+/**
+ * This module contains tests for the helper functions getAppointmentsForDay, getInterview, and getInterviewersForDay.
+ * @module selectors.test
+ */
+
 import {
   getAppointmentsForDay,
   getInterview,

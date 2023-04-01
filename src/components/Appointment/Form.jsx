@@ -1,3 +1,15 @@
+/**
+ * A form component that allows a user to create or edit an appointment.
+ * 
+ * @param {Object} props - The props object containing the following properties:
+ * @param {String} props.student - The name of the student.
+ * @param {Number} props.interviewer - The ID of the interviewer.
+ * @param {Array} props.interviewers - An array of interviewers to be displayed in the interviewer list.
+ * @param {Function} props.onCancel - A function to be called when the user clicks the cancel button.
+ * @param {Function} props.onSave - A function to be called when the user clicks the save button.
+ * @returns {JSX.Element} - A React component representing the appointment form.
+*/
+
 import React from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";

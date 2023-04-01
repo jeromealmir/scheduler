@@ -1,3 +1,14 @@
+/**
+ * A component that represents a single day in the DayList component.
+ *
+ * @param {object} props - The props object that contains the following properties:
+ * @param {string} props.name - The name of the day.
+ * @param {number} props.spots - The number of spots available on the day.
+ * @param {boolean} props.selected - The boolean indicating whether the day is currently selected
+ * @param {function} props.setDay - A function to set the currently selected day
+ * @returns {JSX.Element} - A React component that displays a single day in the list of available days.
+ */
+
 import React from "react";
 import classNames from "classnames";
 import "components/DayListItem.scss";

@@ -1,8 +1,12 @@
+/**
+ * A test suite for the DayListItem component.
+ */
+
 import React from "react";
 import DayListItem from "components/DayListItem";
 import { render, cleanup } from "@testing-library/react";
 
-// clean up any resources or state created during the test case
+// Clean up any resources used by the test after each test
 afterEach(cleanup);
 
 describe("DayListItem", () => {

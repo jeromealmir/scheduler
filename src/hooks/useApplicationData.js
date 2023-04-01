@@ -1,3 +1,9 @@
+/**
+ * A custom hook that manages the state and logic for the Interview Scheduler application.
+ *
+ * @returns An object containing the state, setDay function, appointments, and getLastTime function.
+ */
+
 import React from "react";
 import Appointment from "components/Appointment";
 import axios from "axios";
@@ -32,6 +38,13 @@ export default function useApplicationData() {
 
   const dayID = findDayID(state.day);
 
+  /**
+   * Books an interview for a given appointment ID and updates the state with the new appointment and day information.
+   * @param {number} id - The ID of the appointment to book.
+   * @param {Object} interview - The interview object containing the student name and interviewer ID.
+   * @param {boolean} [editMode=false] - Whether to update the spots count if the appointment is being edited. Default value: false
+   * @returns {Promise} A promise that resolves with the updated state after the appointment has been booked.
+   */
   const bookInterview = async (id, interview, editMode = false) => {
     const appointment = {
       ...state.appointments[id],
@@ -57,6 +70,11 @@ export default function useApplicationData() {
     return setState((prev) => ({ ...prev, appointments, days }));
   };
 
+  /**
+   * Cancels an interview for a given appointment ID and updates the state with the new appointment and day information.
+   * @param {number} id - The ID of the appointment to cancel.
+   * @returns {Promise} A promise that resolves with the updated state after the appointment has been cancelled.
+   */
   const cancelInterview = async (id) => {
     const appointment = {
       ...state.appointments[id],
@@ -81,6 +99,16 @@ export default function useApplicationData() {
   };
 
   const interviewers = getInterviewersForDay(state, state.day);
+
+  /**
+   * Returns an array of Appointment components for the given day.
+   * @param {Object} state - The state object containing the appointments and interviews.
+   * @param {string} state.day - The selected day.
+   * @param {Function} bookInterview - The function to book an interview.
+   * @param {Function} cancelInterview - The function to cancel an interview.
+   * @param {Array} interviewers - The array of interviewers.
+   * @returns {Array} - An array of Appointment components.
+   */
   const appointments = getAppointmentsForDay(state, state.day).map(
     (appointment) => {
       return (
@@ -96,12 +124,23 @@ export default function useApplicationData() {
       );
     }
   );
+
+  /**
+   * Finds the last appointment time in the given array of appointments.
+   * @param {Array} appointments - An array of appointment objects.
+   * @returns {string} The last appointment time in the format of "Xpm".
+   */
   const getLastTime = appointments
     .filter((appointment) => appointment.props && appointment.props.time)
     .map(
       (appointment) => `${parseInt(appointment.props.time.slice(0, -2)) + 1}pm`
     )
     .pop();
+
+  /**
+   * Fetches data from the API and updates the state with the response.
+   * Runs once when the component mounts.
+   */
   useEffect(() => {
     Promise.all([
       axios.get("api/days"),

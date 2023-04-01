@@ -1,3 +1,7 @@
+/**
+ * A test suite for the Appointment component.
+ */
+
 import React from "react";
 import Appointment from "components/Appointment";
 import { render } from "@testing-library/react";

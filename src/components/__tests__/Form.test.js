@@ -1,10 +1,16 @@
+/**
+ * A test suite for the Form component.
+ */
+
 import React from "react";
 import Form from "components/Appointment/Form";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 
+// Clean up any resources used by the test after each test
 afterEach(cleanup);
 
 describe("Form", () => {
+  // Mock data for the interviewers
   const interviewers = [
     {
       id: 1,

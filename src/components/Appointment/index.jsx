@@ -1,3 +1,16 @@
+/**
+ * Appointment component renders the appointment block
+ *
+ * @param {Object} props - The props object containing the following properties:
+ * @param {String} props.time - The time of the appointment to display.
+ * @param {Array} props.interviewers - An array of objects representing the interviewers available for the appointment.
+ * @param {Object} props.interview - Interview object containing the name of student and the interviewer.
+ * @param {Function} props.bookInterview - A function to call when the user cancels the appointment. Function to book the appointment
+ * @param {Function} props.cancelInterview - Function to cancel the appointment
+ * @param {Number} props.id - ID of the appointment
+ * @returns {JSX.Element} - Rendered JSX appointment block
+ */
+
 import React from "react";
 import "./styles.scss";
 import Header from "./Header";

@@ -1,4 +1,9 @@
-//mock data
+/**
+ * A collection of fixtures used for testing purposes. Contains an array of days, each with
+ * an id, name, appointments, interviewers, and spots. Also contains an object of appointments,
+ * each with an id, time, and interview. Lastly, contains an object of interviewers, each with
+ * an id, name, and avatar.
+ */
 const fixtures = {
   days: [
     {
@@ -54,7 +59,10 @@ const fixtures = {
   },
 };
 
-//mock [get, put, delete] functions
+/**
+ * A mock implementation of the Axios library for testing purposes.
+ * @returns An object with mock implementations of the `get`, `put`, and `delete` methods.
+ */
 export default {
   get: jest.fn((url) => {
     switch (url) {

@@ -1,3 +1,12 @@
+/**
+ * A React component that displays an error message if an HTTP request failed.
+ * 
+ * @param {Object} props - The props object containing the following properties:
+ * @param {String} props.message - The error message to display.
+ * @param {Function} props.onClose - The function to call when the close button is clicked.
+ * @returns {JSX.Element} A React component that displays an error message with a close button.
+ */
+
 import React from "react";
 
 export default function Error(props) {

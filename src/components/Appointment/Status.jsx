@@ -1,3 +1,10 @@
+/**
+ * A React component that displays a loading status message with a loading animation.
+ * 
+ * @param {string} props.message - The message to display in the component.
+ * @returns {JSX.Element}
+ */
+
 import React from "react";
 
 export default function Status(props) {

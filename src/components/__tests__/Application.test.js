@@ -1,3 +1,10 @@
+/**
+ * This file contains a series of tests for the Application component. The tests
+ * cover a range of functionality, including selecting a day, booking an interview,
+ * cancelling an interview, editing an interview, and handling errors when saving
+ * or deleting appointments.
+ */
+
 import React from "react";
 import Application from "components/Application";
 import axios from "axios";
@@ -14,7 +21,7 @@ import {
   getByText,
 } from "@testing-library/react";
 
-// clean up any resources or state created during the test case
+// Clean up any resources used by the test after each test
 afterEach(cleanup);
 
 describe("Application", () => {
@@ -120,7 +127,7 @@ describe("Application", () => {
   });
 
   it("shows the save error when failing to save an appointment", async () => {
-    //simulate failed HTTP PUT request by returning a rejected promise
+    // Mocks a rejected Axios PUT request for testing purposes.
     axios.put.mockRejectedValueOnce();
 
     const { container } = render(<Application />);
@@ -147,7 +154,7 @@ describe("Application", () => {
   });
 
   it("shows the delete error when failing to delete an existing appointment", async () => {
-    //simulate failed HTTP DELETE request by returning a rejected promise
+    // Mocks a rejected response for a DELETE request using Axios.
     axios.delete.mockRejectedValueOnce();
 
     const { container } = render(<Application />);

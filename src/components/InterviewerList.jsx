@@ -1,3 +1,10 @@
+/**
+ * A component that displays a list of interviewers to choose from.
+ *
+ * @param {Array} interviewers - An array of interviewer objects.
+ * @returns A list of InterviewerListItem components.
+ */
+
 import React from "react";
 import "components/InterviewerList.scss";
 import InterviewerListItem from "./InterviewerListItem";

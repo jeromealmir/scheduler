@@ -1,3 +1,13 @@
+/**
+ * A React component that displays the details of an appointment.
+ *
+ * @param {string} props.student - The name of the student for the appointment.
+ * @param {string} props.interviewer - The name of the interviewer for the appointment.
+ * @param {function} props.onEdit - A function to handle the edit button click event.
+ * @param {function} props.onDelete - A function to handle the delete button click event.
+ * @returns {JSX.Element} - A React component that displays the details of an appointment.
+ */
+
 import React from "react";
 
 export default function Show(props) {
