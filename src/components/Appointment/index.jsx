@@ -7,36 +7,15 @@ import Form from "./Form";
 import Status from "./Status";
 import Error from "./Error";
 import Confirm from "./Confirm";
-import { useVisualMode } from "hooks/useVisualMode";
+import useAppointmentData from "hooks/useAppointmentData";
 
 export default function Appointment(props) {
-  const { mode, transition, back } = useVisualMode(
-    props.interview ? "SHOW" : "EMPTY"
-  );
-
-  const save = (name, interviewer) => {
-    const interview = {
-      student: name,
-      interviewer,
-    };
-
-    const editMode = mode === "EDIT";
-
-    transition("SAVING");
-
-    return props
-      .bookInterview(props.id, interview, editMode)
-      .then(() => transition("SHOW"))
-      .catch(() => transition("ERROR_SAVE", true));
-  };
-
-  const del = () => {
-    transition("DELETING", true);
-    return props
-      .cancelInterview(props.id)
-      .then(() => transition("EMPTY"))
-      .catch(() => transition("ERROR_DELETE", true));
-  };
+  const { mode, transition, back, save, del } = useAppointmentData({
+    interview: props.interview,
+    bookInterview: props.bookInterview,
+    cancelInterview: props.cancelInterview,
+    id: props.id,
+  });
 
   return (
     <article className="appointment" data-testid="appointment">
