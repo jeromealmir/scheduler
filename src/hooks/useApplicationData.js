@@ -80,6 +80,28 @@ export default function useApplicationData() {
     return setState((prev) => ({ ...prev, appointments, days }));
   };
 
+  const interviewers = getInterviewersForDay(state, state.day);
+  const appointments = getAppointmentsForDay(state, state.day).map(
+    (appointment) => {
+      return (
+        <Appointment
+          key={appointment.id}
+          id={appointment.id}
+          time={appointment.time}
+          interview={getInterview(state, appointment.interview)}
+          bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
+          interviewers={interviewers}
+        />
+      );
+    }
+  );
+  const getLastTime = appointments
+    .filter((appointment) => appointment.props && appointment.props.time)
+    .map(
+      (appointment) => `${parseInt(appointment.props.time.slice(0, -2)) + 1}pm`
+    )
+    .pop();
   useEffect(() => {
     Promise.all([
       axios.get("api/days"),
@@ -95,5 +117,5 @@ export default function useApplicationData() {
     });
   }, []);
 
-  return { state, setDay, bookInterview, cancelInterview };
+  return { state, setDay, appointments, getLastTime };
 }
